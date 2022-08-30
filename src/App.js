@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Login from './Pages/auth/Login';
+
+import { Admin, Resource, ListGuesser,fetchUtils } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+
+import {authProvider,httpClient} from './auth/authProvider';
+
+
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com', httpClient);
+    
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+     <Admin loginPage={Login} dataProvider={dataProvider} authProvider={authProvider} requireAuth>
+          <Resource name="users" list={ListGuesser} />
+    </Admin>
   );
 }
 

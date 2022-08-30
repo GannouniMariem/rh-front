@@ -1,0 +1,8 @@
+@use 'variable.scss' as *;
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import 'Pages/auth/login.scss';
+@import 'Pages/Disponibilite/Disponibilite.scss';
+
+body{
+    background-color: $gray;
+}
